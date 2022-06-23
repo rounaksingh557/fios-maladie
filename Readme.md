@@ -17,18 +17,20 @@
 
 - Final Build Screenshot will be added after sending to production
 
-- Please visit [security](https://github.com/rounaksingh557/Amazon-Clone/security/policy) section for more information about security
+- See [wiki](https://github.com/rounaksingh557/fios-maladie/wiki) page for screenshots 
 
-- check contributing.md [here](https://github.com/rounaksingh557/Amazon-Clone/blob/master/CONTRIBUTING.md)
+- Please visit [security](https://github.com/rounaksingh557/fios-maladie/security/policy) section for more information about security
 
-- Visit Code of Conduct [here](https://github.com/rounaksingh557/Amazon-Clone/blob/master/CODE_OF_CONDUCT.md)
+- check contributing.md [here](https://github.com/rounaksingh557/fios-maladie/blob/master/CONTRIBUTING.md)
 
-- Read the pull request template [here](https://github.com/rounaksingh557/Amazon-Clone/blob/master/.github/Pull_request_template.md)
+- Visit Code of Conduct [here](https://github.com/rounaksingh557/fios-maladie/blob/master/CODE_OF_CONDUCT.md)
+
+- Read the pull request template [here](https://github.com/rounaksingh557/fios-maladie/blob/master/.github/Pull_request_template.md)
 
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/rounaksingh557/Amazon-Clone">
+  <a href="https://github.com/rounaksingh557/fios-maladie">
     <img src="./assets/Image/logoSvg.svg" alt="Logo" width="80" height="80">
   </a>
 
@@ -37,17 +39,15 @@
   <p align="center">
     A react native app made for health care purpose.
     <br />
-    <a href="https://github.com/rounaksingh557/Amazon-Clone#readme"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/rounaksingh557/fios-maladie#readme"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     -
-    <a href="https://github.com/rounaksingh557/Amazon-Clone/issues">Report Bug</a>
+    <a href="https://github.com/rounaksingh557/fios-maladie/issues">Report Bug</a>
     -
-    <a href="https://github.com/rounaksingh557/Amazon-Clone/issues">Request Feature</a>
+    <a href="https://github.com/rounaksingh557/fios-maladie/issues">Request Feature</a>
   </p>
 </div>
-
-<a href="https://github.com/rounaksingh557/Amazon-Clone/wiki"><h1>Please Read The Wiki Page And Look For a Note</h1></a>
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -124,7 +124,7 @@ Follow these steps to run the project in the local development environment.
 
 1. Clone the repo
    ```sh
-   git clone git@github.com:rounaksingh557/Amazon-Clone.git
+   git clone git@github.com:rounaksingh557/fios-maladie.git
    ```
 1. Install Yarn packages
    ```sh
@@ -143,7 +143,7 @@ Follow these steps to run the project in the local development environment.
 
 ## Usage
 
-You can add any feature you. Usage Instruction as per [MIT License](https://github.com/rounaksingh557/Amazon-Clone/blob/master/LICENSE.txt)
+You can add any feature you. Usage Instruction as per [MIT License](https://github.com/rounaksingh557/fios-maladie/blob/master/LICENSE.txt)
 
 <!-- ROADMAP -->
 
@@ -160,7 +160,7 @@ You can add any feature you. Usage Instruction as per [MIT License](https://gith
 - [✒️] Firebase and Backend Work.
 - [✒️] Upload The final Build.
 
-See the [open issues](https://github.com/rounaksingh557/Amazon-Clone/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/rounaksingh557/fios-maladie/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -195,7 +195,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 Rounak Singh - rounaksingh9431738764@gmail.com
 
-Project Link: [https://github.com/rounaksingh557/Amazon-Clone](https://github.com/rounaksingh557/Amazon-Clone)
+Project Link: [https://github.com/rounaksingh557/fios-maladie](https://github.com/rounaksingh557/fios-maladie)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -219,13 +219,13 @@ Thanks for checking my project. Take a look at these references.
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/rounaksingh557/Amazon-Clone.svg?style=for-the-badge
-[contributors-url]: https://github.com/rounaksingh557/Amazon-Clone/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/rounaksingh557/Amazon-Clone.svg?style=for-the-badge
-[forks-url]: https://github.com/rounaksingh557/Amazon-Clone/network/members
-[stars-shield]: https://img.shields.io/github/stars/rounaksingh557/Amazon-Clone.svg?style=for-the-badge
-[stars-url]: https://github.com/rounaksingh557/Amazon-Clone/stargazers
-[issues-shield]: https://img.shields.io/github/issues/rounaksingh557/Amazon-Clone.svg?style=for-the-badge
-[issues-url]: https://github.com/rounaksingh557/Amazon-Clone/issues
-[license-shield]: https://img.shields.io/github/license/rounaksingh557/Amazon-Clone.svg?style=for-the-badge
-[license-url]: https://github.com/rounaksingh557/Amazon-Clone/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/rounaksingh557/fios-maladie.svg?style=for-the-badge
+[contributors-url]: https://github.com/rounaksingh557/fios-maladie/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/rounaksingh557/fios-maladie.svg?style=for-the-badge
+[forks-url]: https://github.com/rounaksingh557/fios-maladie/network/members
+[stars-shield]: https://img.shields.io/github/stars/rounaksingh557/fios-maladie.svg?style=for-the-badge
+[stars-url]: https://github.com/rounaksingh557/fios-maladie/stargazers
+[issues-shield]: https://img.shields.io/github/issues/rounaksingh557/fios-maladie.svg?style=for-the-badge
+[issues-url]: https://github.com/rounaksingh557/fios-maladie/issues
+[license-shield]: https://img.shields.io/github/license/rounaksingh557/fios-maladie.svg?style=for-the-badge
+[license-url]: https://github.com/rounaksingh557/fios-maladie/blob/master/LICENSE.txt
