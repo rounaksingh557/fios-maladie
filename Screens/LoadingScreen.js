@@ -4,13 +4,42 @@
  */
 
 // Modules Import
-import { View, Image, Text, ActivityIndicator, StyleSheet } from "react-native";
+import { useEffect } from "react";
+import {
+  View,
+  Image,
+  Text,
+  ActivityIndicator,
+  StyleSheet,
+  LogBox,
+} from "react-native";
+import firebase from "firebase";
+
+// Helps to ignore some unnecessary logs.
+LogBox.ignoreAllLogs();
 
 /**
  * @returns The Loading Screen React component
  * @description This is a loading screen which has a activity indicator and a image.
  */
-export default function LoadingScreen() {
+export default function LoadingScreen({ navigation }) {
+  /**
+   * @description A function to check if user is logged in using google credentials.
+   */
+  const checkIfLoggedIn = () => {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        navigation.navigate("DashBoardScreen");
+      } else {
+        navigation.navigate("LoginScreen");
+      }
+    });
+  };
+
+  // Declaring UseEffect
+  useEffect(() => {
+    checkIfLoggedIn();
+  }, []);
   return (
     <View style={styles.container}>
       <Image

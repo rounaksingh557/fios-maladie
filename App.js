@@ -8,12 +8,31 @@ import { useEffect, useState } from "react";
 import { ActivityIndicator } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { createSwitchNavigator, createAppContainer } from "react-navigation";
+import firebase from "firebase";
 import * as Font from "expo-font";
 
 // Files Import
 import LoginScreen from "./Screens/LoginScreen";
 import DashBoardScreen from "./Screens/DashBoardScreen";
 import LoadingScreen from "./Screens/LoadingScreen";
+import { FirebaseConfig } from "./DataBase/FirebaseConfig";
+
+// Initializing Firebase
+if (!firebase.apps.length) {
+  firebase.initializeApp(FirebaseConfig);
+} else {
+  firebase.app();
+}
+
+// Primary Navigation
+const AppSwitchNavigator = createSwitchNavigator({
+  LoadingScreen: LoadingScreen,
+  LoginScreen: LoginScreen,
+  DashBoardScreen: DashBoardScreen,
+});
+
+// Defining Navigation Container
+const AppNavigator = createAppContainer(AppSwitchNavigator);
 
 /**
  * @returns A react functional component.
@@ -23,16 +42,6 @@ export default function App() {
   // States Declaration
   const [loaded, setLoaded] = useState(false);
   const [loadLoading, setLoadLoading] = useState(null);
-
-  // Primary Navigation
-  const AppSwitchNavigator = createSwitchNavigator({
-    LoadingScreen: LoadingScreen,
-    LoginScreen: LoginScreen,
-    DashBoardScreen: DashBoardScreen,
-  });
-
-  // Defining Navigation Container
-  const AppNavigator = createAppContainer(AppSwitchNavigator);
 
   /**
    *@description A function to load font and make it globally accessible
