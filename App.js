@@ -44,7 +44,7 @@ export default function App() {
   const [loadLoading, setLoadLoading] = useState(null);
 
   /**
-   *@description A function to load font and make it globally accessible
+   *@description A function to load font and make it globally accessible.
    * */
   async function LoadFonts() {
     await Font.loadAsync({
