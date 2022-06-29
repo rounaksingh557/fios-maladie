@@ -14,12 +14,60 @@ import {
   StyleSheet,
 } from "react-native";
 import { BlurView } from "expo-blur";
+import * as WebBrowser from "expo-web-browser";
+import * as Google from "expo-auth-session/providers/google";
+
+// Invoking web browser
+WebBrowser.maybeCompleteAuthSession();
 
 /**
  * @returns The Login Screen React component.
  * @description This is the LoginScreen of the app which will use google authentication.
  */
 export default function LoginScreen() {
+  // States Declaration
+  const [accessToken, setAccessToken] = useState(null);
+  const [idToken, setIdToken] = useState(null);
+  const [userInfo, setUserInfo] = useState(null);
+
+  // Logs in the user
+  const [request, response, promptAsync] = Google.useAuthRequest({
+    androidClientId:
+      "406194647529-2vicfe83atq6afan2jmm6r7eucdepahl.apps.googleusercontent.com",
+    iosClientId:
+      "406194647529-27s30iinb3a86igrhr04mlmq1u2fhvrv.apps.googleusercontent.com",
+    expoClientId:
+      "406194647529-ik2rvuecag2diqd4hlj76t075s3pgfkt.apps.googleusercontent.com",
+  });
+
+  // useEffect Declaration
+  useEffect(() => {
+    if (response?.type === "success") {
+      setAccessToken(response.authentication.accessToken);
+      setIdToken(response.authentication.idToken);
+
+      if (accessToken != null || idToken != null) {
+        getUserData();
+      }
+    }
+  }, [response]);
+
+  /**
+   * @description Fetches the user info.
+   */
+  const getUserData = async () => {
+    let userInfoResponse = await fetch(
+      "https://www.googleapis.com/userinfo/v2/me",
+      {
+        headers: { Authorization: `Bearer ${accessToken}` },
+      }
+    );
+
+    userInfoResponse.json().then((data) => {
+      setUserInfo(data);
+    });
+  };
+
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -27,7 +75,16 @@ export default function LoginScreen() {
         style={styles.mainImage}
       >
         <BlurView tint="light" intensity={90} style={styles.hostOfLogin}>
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={
+              accessToken
+                ? getUserData
+                : () => {
+                    promptAsync({ showInRecents: true });
+                  }
+            }
+          >
             <Image
               source={require("../assets/Image/google_icon.png")}
               style={styles.googleIcon}
