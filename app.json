@@ -16,13 +16,15 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.rounakexpo.fiosmaladie"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/Image/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.rounakexpo.fiosmaladie"
     },
     "web": {
       "favicon": "./assets/Image/logo.png"
