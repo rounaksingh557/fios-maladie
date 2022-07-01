@@ -3,8 +3,10 @@
  * @license MIT
  */
 
+// Reference for login using google and firebase in expo: https://docs.expo.dev/guides/authentication/#google
+
 // Modules Import
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import {
   View,
   ImageBackground,
@@ -13,6 +15,8 @@ import {
   Image,
   StyleSheet,
 } from "react-native";
+import { GoogleAuthProvider, signInWithCredential } from "firebase/auth";
+import { auth } from "../DataBase/FirebaseConfig";
 import { BlurView } from "expo-blur";
 import * as WebBrowser from "expo-web-browser";
 import * as ExpoGoogle from "expo-auth-session/providers/google";
@@ -25,54 +29,47 @@ WebBrowser.maybeCompleteAuthSession();
  * @description This is the LoginScreen of the app which will use google authentication.
  */
 export default function LoginScreen() {
-  // States Declaration
-  const [result, setResult] = useState(null);
-  const [accessToken, SetAccessToken] = useState(null);
-  const [userInfo, setUserInfo] = useState(null);
-
   /**
    * @param Request: Helps to request server
    * @param Response: The returned value
    * @param promptAsync: Function which starts the login session.
    */
-  const [request, response, promptAsync] = ExpoGoogle.useAuthRequest({
+  const [request, response, promptAsync] = ExpoGoogle.useIdTokenAuthRequest({
     androidClientId:
       "406194647529-2vicfe83atq6afan2jmm6r7eucdepahl.apps.googleusercontent.com",
     iosClientId:
       "406194647529-27s30iinb3a86igrhr04mlmq1u2fhvrv.apps.googleusercontent.com",
+    webClientId:
+      "406194647529-ik2rvuecag2diqd4hlj76t075s3pgfkt.apps.googleusercontent.com",
     expoClientId:
+      "406194647529-ik2rvuecag2diqd4hlj76t075s3pgfkt.apps.googleusercontent.com",
+    clientId:
       "406194647529-ik2rvuecag2diqd4hlj76t075s3pgfkt.apps.googleusercontent.com",
   });
 
   // UseEffect Declaration
   useEffect(() => {
     if (response?.type === "success") {
-      setResult(response);
-      SetAccessToken(response.authentication.accessToken);
+      // Fetching idToken out of response
+      const { id_token } = response.params;
 
-      if (userInfo === null) {
-        getUserData();
-      }
+      console.log(id_token);
+
+      // calling setTimeout to recall and get values again
+      setTimeout(() => {
+        const { id_token } = response.params;
+        console.log(id_token);
+        registerOnFirebase(id_token);
+      }, 3000);
     }
   }, [response]);
 
   /**
-   * @description Using the accessToken it fetches the user data.
+   * @description Helps to register the google user on firebase.s
    */
-  const getUserData = async () => {
-    let userInfoResponse = await fetch(
-      "https://www.googleapis.com/userinfo/v2/me",
-      {
-        headers: { Authorization: `Bearer ${accessToken}` },
-      }
-    );
-
-    userInfoResponse.json().then((data) => {
-      setUserInfo(data);
-    });
-
-    console.log("userInfo", userInfo);
-    console.log("result", result);
+  const registerOnFirebase = (IdToken) => {
+    const credential = GoogleAuthProvider.credential(IdToken);
+    signInWithCredential(auth, credential);
   };
 
   return (
@@ -84,11 +81,7 @@ export default function LoginScreen() {
         <BlurView tint="light" intensity={90} style={styles.hostOfLogin}>
           <TouchableOpacity
             style={styles.button}
-            onPress={
-              accessToken
-                ? getUserData
-                : () => promptAsync({ useProxy: false, showInRecents: true })
-            }
+            onPress={() => promptAsync({ showInRecents: true })}
           >
             <Image
               source={require("../assets/Image/google_icon.png")}

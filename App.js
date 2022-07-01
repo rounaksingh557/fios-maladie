@@ -8,21 +8,12 @@ import { useEffect, useState } from "react";
 import { ActivityIndicator } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { createSwitchNavigator, createAppContainer } from "react-navigation";
-import firebase from "firebase";
 import * as Font from "expo-font";
 
 // Files Import
 import LoginScreen from "./Screens/LoginScreen";
 import DashBoardScreen from "./Screens/DashBoardScreen";
 import LoadingScreen from "./Screens/LoadingScreen";
-import { FirebaseConfig } from "./DataBase/FirebaseConfig";
-
-// Initializing Firebase
-if (!firebase.apps.length) {
-  firebase.initializeApp(FirebaseConfig);
-} else {
-  firebase.app();
-}
 
 // Primary Navigation
 const AppSwitchNavigator = createSwitchNavigator({

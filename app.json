@@ -17,17 +17,22 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.rounakexpo.fiosmaladie"
+      "bundleIdentifier": "com.rounakexpo.fiosmaladie",
+      "googleServicesFile": "./SSL/IOS-Client-Id.plist"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/Image/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.rounakexpo.fiosmaladie"
+      "package": "com.rounakexpo.fiosmaladie",
+      "googleServicesFile": "./SSL/Android-Client-Id.json"
     },
     "web": {
       "favicon": "./assets/Image/logo.png"
+    },
+    "packagerOpts": {
+      "sourceExts": ["cjs"]
     }
   }
 }
