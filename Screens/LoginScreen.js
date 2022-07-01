@@ -53,12 +53,9 @@ export default function LoginScreen() {
       // Fetching idToken out of response
       const { id_token } = response.params;
 
-      console.log(id_token);
-
       // calling setTimeout to recall and get values again
       setTimeout(() => {
         const { id_token } = response.params;
-        console.log(id_token);
         registerOnFirebase(id_token);
       }, 3000);
     }
