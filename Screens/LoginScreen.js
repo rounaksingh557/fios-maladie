@@ -16,7 +16,8 @@ import {
   StyleSheet,
 } from "react-native";
 import { GoogleAuthProvider, signInWithCredential } from "firebase/auth";
-import { auth } from "../DataBase/FirebaseConfig";
+import { authentication, database } from "../DataBase/FirebaseConfig";
+import { ref, set } from "firebase/database";
 import { BlurView } from "expo-blur";
 import * as WebBrowser from "expo-web-browser";
 import * as ExpoGoogle from "expo-auth-session/providers/google";
@@ -62,11 +63,19 @@ export default function LoginScreen() {
   }, [response]);
 
   /**
-   * @description Helps to register the google user on firebase.s
+   * @description Helps to register the google user on firebases also register user details on firebase firestore.
    */
   const registerOnFirebase = (IdToken) => {
     const credential = GoogleAuthProvider.credential(IdToken);
-    signInWithCredential(auth, credential);
+    signInWithCredential(authentication, credential).then((output) => {
+      set(ref(database, "/users/" + output.user.uid), {
+        gmail: output.user.email,
+        name: output.user.displayName,
+        profile_picture: output.user.photoURL,
+        current_theme: "dark",
+        last_login: output.user.metadata.lastSignInTime,
+      });
+    });
   };
 
   return (

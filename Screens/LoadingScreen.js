@@ -13,7 +13,7 @@ import {
   StyleSheet,
   LogBox,
 } from "react-native";
-import { auth } from "../DataBase/FirebaseConfig";
+import { authentication } from "../DataBase/FirebaseConfig";
 
 // Helps to ignore some unnecessary logs.
 LogBox.ignoreAllLogs();
@@ -27,7 +27,7 @@ export default function LoadingScreen({ navigation }) {
    * @description A function to check if user is logged in using google credentials.
    */
   const checkIfLoggedIn = () => {
-    auth.onAuthStateChanged((user) => {
+    authentication.onAuthStateChanged((user) => {
       if (user) {
         navigation.navigate("DashBoardScreen");
       } else {
