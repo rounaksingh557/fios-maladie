@@ -63,7 +63,8 @@ export default function LoginScreen() {
   }, [response]);
 
   /**
-   * @description Helps to register the google user on firebases also register user details on firebase firestore.
+   * @param {*} IdToken It is unique IdToken which helps to register on firebase.
+   * @description Helps to register the google user on firebases also register user details on firebase NoSql Realtime DataBase.
    */
   const registerOnFirebase = (IdToken) => {
     const credential = GoogleAuthProvider.credential(IdToken);
