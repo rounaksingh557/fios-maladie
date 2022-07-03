@@ -19,8 +19,11 @@ export default function StackRoute() {
   const Stack = createStackNavigator();
 
   return (
-    <Stack.Navigator initialRouteName="Home">
-      <Stack.Screen name="Home" component={TabRoute} />
+    <Stack.Navigator
+      initialRouteName="HomeScreen"
+      screenOptions={{ headerShown: false }}
+    >
+      <Stack.Screen name="HomeScreen" component={TabRoute} />
       <Stack.Screen name="News" component={NewsScreen} />
     </Stack.Navigator>
   );

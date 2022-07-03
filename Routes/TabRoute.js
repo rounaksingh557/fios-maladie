@@ -20,8 +20,8 @@ export default function TabRoute() {
   const Tab = createMaterialBottomTabNavigator();
 
   return (
-    <Tab.Navigator>
-      <Tab.Screen name="Home" component={FeedScreen} />
+    <Tab.Navigator initialRouteName="Home">
+      <Tab.Screen name="Feed" component={FeedScreen} />
       <Tab.Screen name="Search" component={Search} />
       <Tab.Screen name="Map" component={MapScreen} />
     </Tab.Navigator>

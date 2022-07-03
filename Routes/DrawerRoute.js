@@ -20,7 +20,18 @@ import MedicinesHistoryScreen from "../Screens/MedicinesHistoryScreen";
 export default function DrawerRoute() {
   const Drawer = createDrawerNavigator();
   return (
-    <Drawer.Navigator>
+    <Drawer.Navigator
+      initialRouteName="Home"
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: "#FFFFE0",
+        },
+        headerTitleAlign: "center",
+        headerTitleStyle: {
+          fontFamily: "TaiHeritageBold",
+        },
+      }}
+    >
       <Drawer.Screen name="Home" component={StackRoute} />
       <Drawer.Screen name="Profile" component={ProfileScreen} />
       <Drawer.Screen

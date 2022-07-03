@@ -3,6 +3,11 @@
  * @license MIT
  */
 
+// Future Planing: https://shopify.github.io/react-native-skia/
+// Future Planing: https://www.youtube.com/watch?v=vQNg06Hf0MQ
+
+// Next Up: Custom Text, Animated Loading Screen, Welcome Page.
+
 // Modules Import
 import { useEffect, useState } from "react";
 import { ActivityIndicator } from "react-native";
