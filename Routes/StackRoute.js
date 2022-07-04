@@ -24,7 +24,7 @@ export default function StackRoute() {
       screenOptions={{ headerShown: false }}
     >
       <Stack.Screen name="HomeScreen" component={TabRoute} />
-      <Stack.Screen name="News" component={NewsScreen} />
+      <Stack.Screen name="NewsScreen" component={NewsScreen} />
     </Stack.Navigator>
   );
 }

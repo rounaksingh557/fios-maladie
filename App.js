@@ -19,11 +19,13 @@ import * as Font from "expo-font";
 import LoginScreen from "./Screens/LoginScreen";
 import DashBoardScreen from "./Screens/DashBoardScreen";
 import LoadingScreen from "./Screens/LoadingScreen";
+import WelcomeScreen from "./Screens/WelcomeScreen";
 
 // Primary Navigation
 const AppSwitchNavigator = createSwitchNavigator({
   LoadingScreen: LoadingScreen,
   LoginScreen: LoginScreen,
+  WelcomeScreen: WelcomeScreen,
   DashBoardScreen: DashBoardScreen,
 });
 

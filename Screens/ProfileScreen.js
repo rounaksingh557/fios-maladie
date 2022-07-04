@@ -5,17 +5,14 @@
 
 // Modules Import
 import { useEffect, useState } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  ImageBackground,
-  Image,
-  Switch,
-} from "react-native";
+import { View, StyleSheet, ImageBackground, Image, Switch } from "react-native";
 import { BlurView } from "expo-blur";
 import { ref, update, onValue } from "firebase/database";
 import { database, authentication } from "../DataBase/FirebaseConfig";
+import { RFValue } from "react-native-responsive-fontsize";
+
+// Files Import
+import ThemeSensitiveText from "../Components/ThemeSensitiveText";
 
 /**
  * @returns A React functional Component.
@@ -38,8 +35,8 @@ export default function ProfileScreen() {
   /**
    * @description Fetches the user info to display in the profile page.
    */
-  const fetchUserInfo = async () => {
-    await onValue(
+  const fetchUserInfo = () => {
+    onValue(
       ref(database, "/users/" + authentication.currentUser.uid),
       (snapshot) => {
         setName(snapshot.val().name);
@@ -72,27 +69,38 @@ export default function ProfileScreen() {
         resizeMode={"cover"}
         source={require("../assets/Image/5-diseases-image.jpg")}
       >
-        <BlurView style={styles.secondContainer} intensity={65} tint="dark">
+        <BlurView style={styles.secondContainer} intensity={55} tint="dark">
           <Image source={{ uri: imageURL }} style={styles.profileImage} />
           <View style={styles.welcomeTextView}>
-            <Text style={styles.welcomeText}>Welcome 👋</Text>
+            <ThemeSensitiveText
+              style={styles.welcomeText}
+              PrimaryText={"Welcome 🙏"}
+            />
           </View>
           <View style={styles.mainName}>
-            <Text style={styles.mainNameText}>{name}</Text>
+            <ThemeSensitiveText
+              style={styles.mainNameText}
+              PrimaryText={name}
+            />
           </View>
           <View style={styles.emailContainer}>
-            <Text style={styles.emailText} adjustsFontSizeToFit={true}>
-              {email}
-            </Text>
+            <ThemeSensitiveText
+              style={styles.emailText}
+              adjustFont={true}
+              PrimaryText={email}
+            />
           </View>
           <View style={styles.last_Login_Container}>
-            <Text style={styles.lastLoginText} adjustsFontSizeToFit={true}>
-              Last Login: {lastLogin}
-            </Text>
+            <ThemeSensitiveText
+              style={styles.lastLoginText}
+              adjustFont={true}
+              PrimaryText={`Last Login: ${lastLogin}`}
+            />
           </View>
-          <Text style={styles.mode}>
-            {lightTheme ? "Dark Mode Off" : "Dark Mode On"}
-          </Text>
+          <ThemeSensitiveText
+            style={styles.mode}
+            PrimaryText={lightTheme ? "Dark Mode Off" : "Dark Mode On"}
+          />
           <Switch
             style={{
               transform: [{ scaleX: 1.3 }, { scaleY: 1.3 }],
@@ -127,7 +135,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     alignItems: "center",
     borderWidth: 5,
-    borderColor: "#fc8403",
+    borderColor: "#FFFFE0",
   },
   profileImage: {
     width: 150,
@@ -140,38 +148,28 @@ const styles = StyleSheet.create({
     top: 20,
   },
   welcomeText: {
-    fontFamily: "TaiHeritageRegular",
-    fontSize: 50,
-    color: "#fff",
+    fontSize: RFValue(50),
   },
   mainName: {
     top: 5,
   },
   mainNameText: {
-    fontFamily: "TaiHeritageRegular",
-    fontSize: 35,
-    color: "#fff",
+    fontSize: RFValue(35),
   },
   emailContainer: {
     top: 5,
   },
   emailText: {
-    fontFamily: "TaiHeritageRegular",
-    fontSize: 20,
-    color: "#fff",
+    fontSize: RFValue(20),
   },
   last_Login_Container: {
     top: 4,
   },
   lastLoginText: {
-    fontFamily: "TaiHeritageRegular",
-    fontSize: 18,
-    color: "#fff",
+    fontSize: RFValue(15),
   },
   mode: {
     top: 5,
-    fontFamily: "TaiHeritageRegular",
-    fontSize: 20,
-    color: "#fff",
+    fontSize: RFValue(20),
   },
 });

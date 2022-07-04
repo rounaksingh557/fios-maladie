@@ -14,6 +14,7 @@ import {
   LogBox,
 } from "react-native";
 import { authentication } from "../DataBase/FirebaseConfig";
+import { RFValue } from "react-native-responsive-fontsize";
 
 // Helps to ignore some unnecessary logs.
 LogBox.ignoreAllLogs();
@@ -29,7 +30,7 @@ export default function LoadingScreen({ navigation }) {
   const checkIfLoggedIn = () => {
     authentication.onAuthStateChanged((user) => {
       if (user) {
-        navigation.navigate("DashBoardScreen");
+        navigation.navigate("WelcomeScreen");
       } else {
         navigation.navigate("LoginScreen");
       }
@@ -67,7 +68,7 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   mainTitle: {
-    fontSize: 40,
+    fontSize: RFValue(40),
     top: 150,
     fontFamily: "TaiHeritageBold",
   },
