@@ -58,7 +58,7 @@ export default function ThemeSensitiveText({
         {PrimaryText}
       </Text>
     );
-  } else if (PrimaryText || adjustFont) {
+  } else if (PrimaryText || adjustFont === true) {
     return (
       <Text
         style={[
