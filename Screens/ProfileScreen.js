@@ -75,12 +75,14 @@ export default function ProfileScreen() {
             <ThemeSensitiveText
               style={styles.welcomeText}
               PrimaryText={"Welcome 🙏"}
+              Bold={true}
             />
           </View>
           <View style={styles.mainName}>
             <ThemeSensitiveText
               style={styles.mainNameText}
               PrimaryText={name}
+              Bold={true}
             />
           </View>
           <View style={styles.emailContainer}>
@@ -88,6 +90,7 @@ export default function ProfileScreen() {
               style={styles.emailText}
               adjustFont={true}
               PrimaryText={email}
+              Bold={true}
             />
           </View>
           <View style={styles.last_Login_Container}>
@@ -95,11 +98,13 @@ export default function ProfileScreen() {
               style={styles.lastLoginText}
               adjustFont={true}
               PrimaryText={`Last Login: ${lastLogin}`}
+              Bold={true}
             />
           </View>
           <ThemeSensitiveText
             style={styles.mode}
             PrimaryText={lightTheme ? "Dark Mode Off" : "Dark Mode On"}
+            Bold={true}
           />
           <Switch
             style={{
@@ -117,6 +122,7 @@ export default function ProfileScreen() {
   );
 }
 
+// Styles Declaration
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -148,7 +154,7 @@ const styles = StyleSheet.create({
     top: 20,
   },
   welcomeText: {
-    fontSize: RFValue(50),
+    fontSize: RFValue(45),
   },
   mainName: {
     top: 5,
@@ -160,7 +166,7 @@ const styles = StyleSheet.create({
     top: 5,
   },
   emailText: {
-    fontSize: RFValue(20),
+    fontSize: RFValue(18),
   },
   last_Login_Container: {
     top: 4,

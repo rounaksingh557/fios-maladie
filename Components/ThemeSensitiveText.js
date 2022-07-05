@@ -78,6 +78,7 @@ export default function ThemeSensitiveText({
   }
 }
 
+// Styles Declaration
 const styles = StyleSheet.create({
   Custom_Text_Light: {
     color: "#000000",

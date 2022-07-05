@@ -4,7 +4,6 @@
  */
 
 // Icons: https://oblador.github.io/react-native-vector-icons/
-// Help: https://www.youtube.com/watch?v=l8nY4Alk70Q
 
 // Modules Import
 import { useEffect, useState } from "react";
@@ -115,6 +114,7 @@ export default function CustomSideBarMenu(props) {
   );
 }
 
+// Styles Declaration
 const styles = StyleSheet.create({
   container: {
     flex: 1,
