@@ -14,7 +14,7 @@ import Search from "../Screens/SearchScreen";
 import MapScreen from "../Screens/MapScreen";
 import FeedScreen from "../Screens/FeedScreen";
 import MedicinesHistoryScreen from "../Screens/MedicinesHistoryScreen";
-import ShareNews from "../Screens/ShareNews";
+import ShareNewsScreen from "../Screens/ShareNewsScreen";
 import TabButtonForShareNews from "../Components/TabButtonForShareNews";
 
 /**
@@ -112,7 +112,7 @@ export default function TabRoute() {
       />
       <Tab.Screen
         name="ShareNews"
-        component={ShareNews}
+        component={ShareNewsScreen}
         options={{
           tabBarIcon: () => {
             return (

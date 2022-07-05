@@ -10,7 +10,7 @@ import { View, Text } from "react-native";
  * @returns A React functional Component.
  * @description A Share new component which helps to share news and facts.
  */
-export default function ShareNews() {
+export default function ShareNewsScreen() {
   return (
     <View
       style={{
