@@ -6,7 +6,7 @@
 // Go's to - Home Page, Search Page, Map Page
 
 // Modules Import
-import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, Image } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 // Files Import
@@ -14,8 +14,6 @@ import Search from "../Screens/SearchScreen";
 import MapScreen from "../Screens/MapScreen";
 import FeedScreen from "../Screens/FeedScreen";
 import MedicinesHistoryScreen from "../Screens/MedicinesHistoryScreen";
-import ShareNewsScreen from "../Screens/ShareNewsScreen";
-import TabButtonForShareNews from "../Components/TabButtonForShareNews";
 
 /**
  * @returns The Tab Navigator.
@@ -107,28 +105,6 @@ export default function TabRoute() {
                 </Text>
               </View>
             );
-          },
-        }}
-      />
-      <Tab.Screen
-        name="ShareNews"
-        component={ShareNewsScreen}
-        options={{
-          tabBarIcon: () => {
-            return (
-              <Image
-                source={require("../assets/Icons/create.png")}
-                resizeMode="contain"
-                style={{
-                  height: 30,
-                  width: 30,
-                  tintColor: "#fff",
-                }}
-              />
-            );
-          },
-          tabBarButton: (props) => {
-            return <TabButtonForShareNews {...props} />;
           },
         }}
       />
