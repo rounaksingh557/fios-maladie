@@ -98,6 +98,7 @@ export default function WelcomeScreen({ navigation }) {
   }
 }
 
+// Styles Declaration
 const styles = StyleSheet.create({
   container: {
     flex: 1,
