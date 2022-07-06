@@ -6,8 +6,18 @@
 // Next Up: Share using react-native-view-shot and Preview Page.
 
 // Modules Import
-import { View, ScrollView, Image, StyleSheet } from "react-native";
+import { useRef } from "react";
+import {
+  View,
+  ScrollView,
+  Image,
+  TouchableOpacity,
+  StyleSheet,
+} from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
+import ViewShot, { captureRef } from "react-native-view-shot";
+import { shareAsync } from "expo-sharing";
+import Ionicons from "react-native-vector-icons/Ionicons";
 
 // Files Import
 import ThemeSensitiveText from "../Components/ThemeSensitiveText";
@@ -17,7 +27,26 @@ import ThemeSensitiveText from "../Components/ThemeSensitiveText";
  * @description A News component which display's news and facts.
  */
 export default function NewsScreen() {
+  // UseRef Declaration
+  const SnapShot = useRef(null);
+
+  // Temp Date
   let date = new Date().toLocaleDateString().toString();
+
+  /**
+   * @description Helps in taking the snapshot and sharing it.
+   */
+  const shareNews = async () => {
+    const result = await captureRef(SnapShot, {
+      result: "tmpfile",
+      quality: 1,
+      format: "jpg",
+    });
+
+    if (result != null) {
+      shareAsync(result);
+    }
+  };
 
   return (
     <View
@@ -26,7 +55,7 @@ export default function NewsScreen() {
         backgroundColor: "#fff",
       }}
     >
-      <View style={{ flex: 1 }}>
+      <ViewShot style={{ flex: 1 }} ref={SnapShot}>
         <ScrollView style={styles.newsCard}>
           <Image
             source={{
@@ -54,6 +83,16 @@ export default function NewsScreen() {
                 Bold={true}
               />
             </View>
+            <View style={styles.iconContainer}>
+              <TouchableOpacity onPress={() => shareNews()}>
+                <Ionicons
+                  name="share"
+                  size={30}
+                  color="#3c3c3c"
+                  style={{ margin: 15 }}
+                />
+              </TouchableOpacity>
+            </View>
           </View>
           <View style={styles.mainNews}>
             <ThemeSensitiveText
@@ -65,7 +104,7 @@ export default function NewsScreen() {
             />
           </View>
         </ScrollView>
-      </View>
+      </ViewShot>
     </View>
   );
 }
@@ -104,5 +143,8 @@ const styles = StyleSheet.create({
   },
   newsText: {
     fontSize: RFValue(15),
+  },
+  iconContainer: {
+    flex: 0.2,
   },
 });
