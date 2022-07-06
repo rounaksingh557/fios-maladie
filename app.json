@@ -18,7 +18,10 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.rounakexpo.fiosmaladie",
-      "googleServicesFile": "./SSL/IOS-Client-Id.plist"
+      "googleServicesFile": "./SSL/IOS-Client-Id.plist",
+      "config": {
+        "googleMapsApiKey": "AIzaSyCjy7uKOQc8FGX4hL66uUr3Bp_kYabcwY8"
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -26,7 +29,20 @@
         "backgroundColor": "#FFFFFF"
       },
       "package": "com.rounakexpo.fiosmaladie",
-      "googleServicesFile": "./SSL/Android-Client-Id.json"
+      "googleServicesFile": "./SSL/Android-Client-Id.json",
+      "permissions": [
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.ACCESS_MEDIA_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.CAMERA"
+      ],
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyDgAp-4dR7ca3YdO28R_-sJkg5DlmRFy-8"
+        }
+      }
     },
     "web": {
       "favicon": "./assets/Image/logo.png"

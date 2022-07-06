@@ -73,7 +73,7 @@ export default function LoginScreen() {
         gmail: output.user.email,
         name: output.user.displayName,
         profile_picture: output.user.photoURL,
-        current_theme: "dark",
+        current_theme: "light",
         last_login: output.user.metadata.lastSignInTime,
       });
     });
