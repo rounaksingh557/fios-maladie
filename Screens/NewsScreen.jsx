@@ -3,8 +3,6 @@
  * @license MIT
  */
 
-// Next Up: Share using react-native-view-shot and Preview Page.
-
 // Modules Import
 import { useRef } from "react";
 import {
