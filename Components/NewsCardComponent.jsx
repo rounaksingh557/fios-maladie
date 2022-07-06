@@ -4,6 +4,7 @@
  */
 
 // Modules Import
+import { useState } from "react";
 import {
   TouchableOpacity,
   View,
@@ -17,17 +18,33 @@ import { RFValue } from "react-native-responsive-fontsize";
 import ThemeSensitiveText from "./ThemeSensitiveText";
 
 /**
- * @returns A React functional Component.
+ * @param navigation The navigation system.
+ * @pram News The news info.
  * @description A NewsCard component to display the card of news.
+ * @returns A React functional Component.
  */
-export default function NewsCardComponent({ navigation }) {
+export default function NewsCardComponent({ navigation, News }) {
+  // States Declaration
+  const [data, setData] = useState(News.value);
+  const [newsId, setNewsId] = useState(News.key);
+
   return (
-    <TouchableOpacity onPress={() => navigation.navigate("NewsScreen")}>
+    <TouchableOpacity
+      onPress={() =>
+        navigation.navigate("NewsScreen", {
+          screen: "NewsScreen",
+          param: {
+            news: data,
+            id: newsId,
+          },
+        })
+      }
+    >
       <View style={styles.cardContainer}>
         <View>
           <Image
             source={{
-              uri: "https://media.self.com/photos/617811dba28304b5a601fc8c/4:3/w_2560%2Cc_limit/GettyImages-1265249194.jpg",
+              uri: data.image_url,
             }}
             style={{
               width: Dimensions.get("window").width - 60,
@@ -42,20 +59,18 @@ export default function NewsCardComponent({ navigation }) {
           <View style={styles.titleTextContainer}>
             <ThemeSensitiveText
               style={styles.newsTitleText}
-              PrimaryText={"Asthma Article - StatPearls"}
+              PrimaryText={data.title}
             />
             <ThemeSensitiveText
               style={styles.newsAuthorText}
-              PrimaryText={"Rounak Singh"}
+              PrimaryText={data.author}
             />
           </View>
         </View>
         <View style={styles.descriptionContainer}>
           <ThemeSensitiveText
             style={styles.descriptionText}
-            PrimaryText={
-              "Asthma is a chronic disease of the air passages characterized by inflammation and narrowing of the airways."
-            }
+            PrimaryText={data.description}
           />
         </View>
       </View>

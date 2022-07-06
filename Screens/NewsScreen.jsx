@@ -26,12 +26,16 @@ import ThemeSensitiveText from "../Components/ThemeSensitiveText";
  * @returns A React functional Component.
  * @description A News component which display's news and facts.
  */
-export default function NewsScreen() {
+export default function NewsScreen({ navigation }) {
   // UseRef Declaration
   const SnapShot = useRef(null);
 
-  // Temp Date
-  let date = new Date().toLocaleDateString().toString();
+  // Fetching value from navigation
+  const { routes } = navigation.getState();
+  const output = routes.find((e) => e.name === "NewsScreen");
+  const { params } = output;
+  const { param } = params;
+  const { news } = param;
 
   /**
    * @description Helps in taking the snapshot and sharing it.
@@ -59,7 +63,7 @@ export default function NewsScreen() {
         <ScrollView style={styles.newsCard}>
           <Image
             source={{
-              uri: "https://media.self.com/photos/617811dba28304b5a601fc8c/4:3/w_2560%2Cc_limit/GettyImages-1265249194.jpg",
+              uri: news.image_url,
             }}
             style={styles.mainImage}
             resizeMode="contain"
@@ -68,18 +72,13 @@ export default function NewsScreen() {
             <View style={styles.titleTextContainer}>
               <ThemeSensitiveText
                 style={styles.titleText}
-                PrimaryText={"Asthma Article - StatPearls"}
+                PrimaryText={news.title}
                 adjustFont={true}
                 Bold={true}
               />
               <ThemeSensitiveText
                 style={styles.newsAuthorText}
-                PrimaryText={"Rounak Singh"}
-                Bold={true}
-              />
-              <ThemeSensitiveText
-                style={styles.newsAuthorText}
-                PrimaryText={date}
+                PrimaryText={news.author}
                 Bold={true}
               />
             </View>
@@ -97,9 +96,7 @@ export default function NewsScreen() {
           <View style={styles.mainNews}>
             <ThemeSensitiveText
               style={styles.newsText}
-              PrimaryText={
-                "The overall etiology is complex and still not fully understood, especially when it comes to being able to say which children with pediatric asthma will carry on to have asthma as adults (up to 40% of children have a wheeze, only 1% of adults have asthma), but it is agreed that it is a multifactorial pathology, influenced by both genetics and environmental exposure."
-              }
+              PrimaryText={news.news}
               Bold={true}
             />
           </View>
