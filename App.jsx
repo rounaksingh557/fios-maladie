@@ -6,6 +6,10 @@
 // Future Planing: https://shopify.github.io/react-native-skia/
 // Future Planing: https://www.youtube.com/watch?v=vQNg06Hf0MQ
 
+// UnSure: https://maps.googleapis.com/maps/api/geocode/json?&address=
+// Search Places: https://www.youtube.com/watch?v=qlELLikT3FU
+// Distance And Card: https://www.youtube.com/watch?v=bvn_HYpix6s
+
 // Next Up: Custom Text, Animated Loading Screen, Welcome Page.
 
 // Modules Import

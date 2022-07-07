@@ -5,8 +5,8 @@
 
 // Modules Import
 import { useEffect, useState } from "react";
-import { View, ActivityIndicator } from "react-native";
-import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
+import { View, ActivityIndicator, Dimensions } from "react-native";
+import MapView, { Marker, Circle } from "react-native-maps";
 import * as Location from "expo-location";
 
 // Files Import
@@ -30,7 +30,9 @@ export default function MapScreen() {
 
     if (status != "granted") {
       setGranted("not granted");
-      setError("Permission to access location was denied");
+      setError(
+        "Permission to access location was denied, go in setting to enable it."
+      );
     } else {
       getLocation();
     }
@@ -57,7 +59,7 @@ export default function MapScreen() {
   /**
    * @description  Dataset to be used bu mapView and marker.
    * */
-  const mapRegion = {
+  const InitialMapRegion = {
     latitude: latitude,
     longitude: longitude,
     latitudeDelta: 0.0922,
@@ -91,11 +93,28 @@ export default function MapScreen() {
         }}
       >
         <MapView
-          provider={PROVIDER_GOOGLE}
-          region={mapRegion}
-          style={{ flex: 1, height: "100%", width: "100%" }}
+          provider="google"
+          initialRegion={InitialMapRegion}
+          style={{
+            height: Dimensions.get("window").height,
+            width: Dimensions.get("window").width,
+          }}
         >
-          <Marker coordinate={mapRegion} title="You are here" />
+          <Marker
+            coordinate={{
+              latitude: latitude,
+              longitude: longitude,
+            }}
+            title="I'm here"
+            pinColor={"#000000"}
+          />
+          <Circle
+            center={{
+              latitude: latitude,
+              longitude: longitude,
+            }}
+            radius={1000}
+          />
         </MapView>
       </View>
     );
