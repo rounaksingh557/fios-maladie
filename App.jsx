@@ -10,6 +10,8 @@
 // Search Places: https://www.youtube.com/watch?v=qlELLikT3FU
 // Distance And Card: https://www.youtube.com/watch?v=bvn_HYpix6s
 
+// Got an API key: https://places.ls.hereapi.com/places/v1/discover/explore?at=28.6131%2C77.2293&cat=hospital-health-care-facility&apiKey=API_KEY
+
 // Next Up: Custom Text, Animated Loading Screen, Welcome Page.
 
 // Modules Import
