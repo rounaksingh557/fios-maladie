@@ -2,17 +2,11 @@
  * @author Rounak Singh
  * @license MIT
  */
+// Location IQ website: https://locationiq.com/
+// https://locationiq.com/sandbox/routing/directions#
+// https://alioguzhan.medium.com/react-native-maps-with-google-directions-api-bc716ed7a366
 
 // Future Planing: https://shopify.github.io/react-native-skia/
-// Future Planing: https://www.youtube.com/watch?v=vQNg06Hf0MQ
-
-// UnSure: https://maps.googleapis.com/maps/api/geocode/json?&address=
-// Search Places: https://www.youtube.com/watch?v=qlELLikT3FU
-// Distance And Card: https://www.youtube.com/watch?v=bvn_HYpix6s
-
-// Got an API key: https://places.ls.hereapi.com/places/v1/discover/explore?at=28.6131%2C77.2293&cat=hospital-health-care-facility&apiKey=API_KEY
-
-// Next Up: Custom Text, Animated Loading Screen, Welcome Page.
 
 // Modules Import
 import { useEffect, useState } from "react";
