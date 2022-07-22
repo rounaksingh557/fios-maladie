@@ -78,6 +78,7 @@ export default function MapScreen() {
    * @param {*} text The location the user is searching for.
    */
   const onChangeText = (text) => {
+    setDone(false);
     setInput(text);
     if (text.length > 2) {
       findHospital(text);
@@ -168,7 +169,7 @@ export default function MapScreen() {
                       setDone(true);
                     }}
                   >
-                    {ItemDisplayer(item)}
+                    {done == true ? null : ItemDisplayer(item)}
                   </Pressable>
                 );
               }}
