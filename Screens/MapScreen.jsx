@@ -15,7 +15,7 @@ import {
   FlatList,
   Pressable,
 } from "react-native";
-import MapView, { Marker, Circle } from "react-native-maps";
+import MapView, { Marker, Circle, Polyline } from "react-native-maps";
 import { API_KEY } from "../API/LocationIQ";
 import LocationIQ from "react-native-locationiq";
 import * as Location from "expo-location";
@@ -32,6 +32,7 @@ export default function MapScreen() {
   // States Declaration
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
+  const [done, setDone] = useState(false);
   const [laterLatitude, setLaterLatitude] = useState(null);
   const [laterLongitude, setLaterLongitude] = useState(null);
   const [input, setInput] = useState(null);
@@ -64,8 +65,6 @@ export default function MapScreen() {
   const findHospital = (place) => {
     LocationIQ.search(place)
       .then((result) => {
-        let lat = result[0].lat;
-        let lon = result[0].lon;
         let data = result;
         setData(data);
       })
@@ -159,7 +158,19 @@ export default function MapScreen() {
             <FlatList
               data={data}
               renderItem={({ item, index }) => {
-                return <Pressable>{ItemDisplayer(item)}</Pressable>;
+                return (
+                  <Pressable
+                    onPress={() => {
+                      let lat = Number(item.lat);
+                      let lon = Number(item.lon);
+                      setLaterLatitude(lat);
+                      setLaterLongitude(lon);
+                      setDone(true);
+                    }}
+                  >
+                    {ItemDisplayer(item)}
+                  </Pressable>
+                );
               }}
               keyExtractor={(item) => item.osm_id}
               showsVerticalScrollIndicator={false}
@@ -180,7 +191,6 @@ export default function MapScreen() {
               longitude: longitude,
             }}
             title="I'm here"
-            pinColor={"#000000"}
           />
           <Circle
             center={{
@@ -189,6 +199,26 @@ export default function MapScreen() {
             }}
             radius={1000}
           />
+
+          {done == true ? (
+            <>
+              <Marker
+                coordinate={{
+                  latitude: laterLatitude,
+                  longitude: laterLongitude,
+                }}
+                title="Destination"
+              />
+              <Polyline
+                coordinates={[
+                  { latitude: latitude, longitude: longitude },
+                  { latitude: laterLatitude, longitude: laterLongitude },
+                ]}
+                strokeColor={"#000"}
+                strokeWidth={5}
+              />
+            </>
+          ) : null}
         </MapView>
       </View>
     );

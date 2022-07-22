@@ -84,7 +84,7 @@ export default function FeedScreen({ navigation }) {
           <ThemeSensitiveText PrimaryText={"No News"} />
         </View>
       ) : (
-        <View style={{ flex: 0.93 }}>
+        <View style={{ flex: 0.93, backgroundColor: "#FFFFE0", opacity: 0.8 }}>
           <FlatList
             keyExtractor={keyExtractor}
             renderItem={renderItem}

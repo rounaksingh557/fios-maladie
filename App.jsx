@@ -6,6 +6,8 @@
 // https://locationiq.com/sandbox/routing/directions#
 // https://alioguzhan.medium.com/react-native-maps-with-google-directions-api-bc716ed7a366
 
+// Help https://www.youtube.com/watch?v=ZXT8i0qR2vE
+
 // Future Planing: https://shopify.github.io/react-native-skia/
 
 // Modules Import
